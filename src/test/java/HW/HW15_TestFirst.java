@@ -5,10 +5,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
-import runner.BaseTest;
+import runner.FirstBaseTest;
 
 
-public class HW15_Test extends BaseTest {
+public class HW15_TestFirst extends FirstBaseTest {
 //    Задача
 //    Необходимо написать любой тест на Selenium, можете использовать любой сайт (лучше не использовать сайт крупных
 //    компаний, они будут защищаться от ваших тестов). Без разницы какой тест, главная задача это начать

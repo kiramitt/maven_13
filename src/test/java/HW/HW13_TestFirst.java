@@ -1,17 +1,12 @@
 package HW;
 
 import org.apache.commons.lang3.StringUtils;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import runner.BaseTest;
-
-import java.time.Duration;
-
-import static school.redrover.Lesson13.getSum;
+import runner.FirstBaseTest;
 
 
-public class HW13_Test extends BaseTest {
+public class HW13_TestFirst extends FirstBaseTest {
 //    Задача
 //    Необходимо написать тесты для любого метода из подключенной библиотеки (можно использовать StringUtils) или можно
 //    написать свой метод и протестировать его. Тесты должны запускаться через TestNG.
