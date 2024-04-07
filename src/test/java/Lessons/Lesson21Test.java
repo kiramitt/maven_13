@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-public class Lesson21_Test extends BaseTest {
+public class Lesson21Test extends BaseTest {
     @Test
     public void jenkinsTest() {
         WebElement welcomeText = getDriver().findElement(By.cssSelector(".empty-state-block > h1"));

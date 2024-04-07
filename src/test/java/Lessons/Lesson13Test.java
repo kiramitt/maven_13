@@ -3,10 +3,9 @@ package Lessons;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static school.redrover.Lesson13.getPad;
 import static school.redrover.Lesson13.getSum;
 
-public class Lesson13_Test {
+public class Lesson13Test {
 
     @Test
     public void testGetSum() {

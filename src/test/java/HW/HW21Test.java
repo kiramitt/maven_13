@@ -1,7 +1,6 @@
 package HW;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,10 +8,9 @@ import runner.BaseTest;
 
 import java.util.NoSuchElementException;
 import java.util.UUID;
-import java.util.Properties;
 
 
-public class HW21_Test extends BaseTest {
+public class HW21Test extends BaseTest {
 
     public void createItem(String itemName, String item) {
         try {
@@ -44,7 +42,7 @@ public class HW21_Test extends BaseTest {
         }
         getDriver().findElement(By.id("ok-button")).click();
         getDriver().findElement(By.name("Submit")).click();
-        Assert.assertEquals(getDriver().getCurrentUrl(), String.format("http://localhost:8080/job/%s/",itemName),item + "don`t create");
+        Assert.assertEquals(getDriver().getCurrentUrl(), String.format("http://localhost:8080/job/%s/",itemName), item + "don`t create");
         getDriver().findElement(By.linkText("Dashboard")).click();
     }
 
@@ -62,9 +60,9 @@ public class HW21_Test extends BaseTest {
     // find folder on Dashboard
     // find a moved freestyle project inside folder
 
-        String projectName = "Freestyle-" + UUID.randomUUID().toString();
+        String projectName = "Freestyle-" + UUID.randomUUID();
         createItem(projectName,"Freestyle project");
-        String folderName = "Folder-" + UUID.randomUUID().toString();
+        String folderName = "Folder-" + UUID.randomUUID();
         createItem(folderName,"Folder");
 
         getDriver().findElement(By.cssSelector("tr[id='job_"+projectName+"'] a")).click();

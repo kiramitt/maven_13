@@ -1,5 +1,5 @@
 package Lessons;
 
-public class Lesson17_Test {
+public class Lesson17Test {
 //    GitHub
 }

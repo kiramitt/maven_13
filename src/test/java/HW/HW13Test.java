@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import runner.FirstBaseTest;
 
 
-public class HW13_Test extends FirstBaseTest {
+public class HW13Test extends FirstBaseTest {
 //    Задача
 //    Необходимо написать тесты для любого метода из подключенной библиотеки (можно использовать StringUtils) или можно
 //    написать свой метод и протестировать его. Тесты должны запускаться через TestNG.

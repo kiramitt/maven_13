@@ -7,7 +7,7 @@ import runner.FirstBaseTest;
 
 import java.time.Duration;
 
-public class HW19_Test extends FirstBaseTest {
+public class HW19Test extends FirstBaseTest {
     @Test
     public void jenkinsTest() {
         String jobName = "Test Job";

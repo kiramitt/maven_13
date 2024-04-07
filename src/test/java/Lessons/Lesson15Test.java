@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Lesson15_Test {
+public class Lesson15Test {
     @Test
     public void test() {
         WebDriver driver = new ChromeDriver();
