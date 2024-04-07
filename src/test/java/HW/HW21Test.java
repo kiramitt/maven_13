@@ -1,6 +1,7 @@
 package HW;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,30 +20,35 @@ public class HW21Test extends BaseTest {
             getDriver().findElement(By.linkText("Create a job")).click();
         }
         getDriver().findElement(By.id("name")).sendKeys(itemName);
+        String itemClassName = "";
         switch (item) {
             case "Freestyle project":
-                getDriver().findElement(By.className("hudson_model_FreeStyleProject")).click();
+                itemClassName = "hudson_model_FreeStyleProject";
                 break;
             case "Pipeline":
-                getDriver().findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
+                itemClassName = "org_jenkinsci_plugins_workflow_job_WorkflowJob";
                 break;
             case "Multi-configuration project":
-                getDriver().findElement(By.className("hudson_matrix_MatrixProject")).click();
+                itemClassName = "hudson_matrix_MatrixProject";
                 break;
             case "Folder":
-                getDriver().findElement(By.className("com_cloudbees_hudson_plugins_folder_Folder")).click();
+                itemClassName = "com_cloudbees_hudson_plugins_folder_Folder";
                 break;
             case "Multibranch Pipeline":
-                getDriver().findElement(By.className("org_jenkinsci_plugins_workflow_multibranch_WorkflowMultiBranchProject")).click();
+                itemClassName = "org_jenkinsci_plugins_workflow_multibranch_WorkflowMultiBranchProject";
                 break;
             case "Organization Folder":
-                getDriver().findElement(By.className("jenkins_branch_OrganizationFolder")).click();
+                itemClassName = "jenkins_branch_OrganizationFolder";
                 break;
-            default:
         }
+        getDriver().findElement(By.className(itemClassName)).click();
+        Assert. assertEquals(getDriver().findElement(By.className(itemClassName)).getAttribute("aria-checked"),
+                "true", item + "is not checked");
+
         getDriver().findElement(By.id("ok-button")).click();
         getDriver().findElement(By.name("Submit")).click();
-        Assert.assertEquals(getDriver().getCurrentUrl(), String.format("http://localhost:8080/job/%s/",itemName), item + "don`t create");
+        Assert.assertEquals(getDriver().getCurrentUrl(), "http://localhost:8080/job/"+itemName+"/",
+                item + "is not created");
         getDriver().findElement(By.linkText("Dashboard")).click();
     }
 
@@ -65,7 +71,10 @@ public class HW21Test extends BaseTest {
         String folderName = "Folder-" + UUID.randomUUID();
         createItem(folderName,"Folder");
 
-        getDriver().findElement(By.cssSelector("tr[id='job_"+projectName+"'] a")).click();
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(getDriver().findElement(By.cssSelector("tr[id='job_"+projectName+"'] a"))).build().perform();
+//        getDriver().findElement(By.cssSelector("tr[id='job_"+projectName+"'] a")).click();
+        getDriver().findElement(By.cssSelector("button.jenkins-menu-dropdown-chevron[data-href='http://localhost:8080/job/"+projectName+"/']")).click();
         getDriver().findElement(By.xpath("//a[contains(., 'Move')]")).click();
 
         Select select = new Select(getDriver().findElement(By.className("select")));
