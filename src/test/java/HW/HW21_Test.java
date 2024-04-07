@@ -44,7 +44,7 @@ public class HW21_Test extends BaseTest {
         }
         getDriver().findElement(By.id("ok-button")).click();
         getDriver().findElement(By.name("Submit")).click();
-        Assert.assertEquals(getDriver().getCurrentUrl(), String.format("http://localhost:8080/job/%s/",itemName));
+        Assert.assertEquals(getDriver().getCurrentUrl(), String.format("http://localhost:8080/job/%s/",itemName),item + "don`t create");
         getDriver().findElement(By.linkText("Dashboard")).click();
     }
 
