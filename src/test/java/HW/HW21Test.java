@@ -20,27 +20,15 @@ public class HW21Test extends BaseTest {
             getDriver().findElement(By.linkText("Create a job")).click();
         }
         getDriver().findElement(By.id("name")).sendKeys(itemName);
-        String itemClassName = "";
-        switch (item) {
-            case "Freestyle project":
-                itemClassName = "hudson_model_FreeStyleProject";
-                break;
-            case "Pipeline":
-                itemClassName = "org_jenkinsci_plugins_workflow_job_WorkflowJob";
-                break;
-            case "Multi-configuration project":
-                itemClassName = "hudson_matrix_MatrixProject";
-                break;
-            case "Folder":
-                itemClassName = "com_cloudbees_hudson_plugins_folder_Folder";
-                break;
-            case "Multibranch Pipeline":
-                itemClassName = "org_jenkinsci_plugins_workflow_multibranch_WorkflowMultiBranchProject";
-                break;
-            case "Organization Folder":
-                itemClassName = "jenkins_branch_OrganizationFolder";
-                break;
-        }
+        String itemClassName = switch (item) {
+            case "Freestyle project" -> "hudson_model_FreeStyleProject";
+            case "Pipeline" -> "org_jenkinsci_plugins_workflow_job_WorkflowJob";
+            case "Multi-configuration project" -> "hudson_matrix_MatrixProject";
+            case "Folder" -> "com_cloudbees_hudson_plugins_folder_Folder";
+            case "Multibranch Pipeline" -> "org_jenkinsci_plugins_workflow_multibranch_WorkflowMultiBranchProject";
+            case "Organization Folder" -> "jenkins_branch_OrganizationFolder";
+            default -> "";
+        };
         getDriver().findElement(By.className(itemClassName)).click();
         Assert. assertEquals(getDriver().findElement(By.className(itemClassName)).getAttribute("aria-checked"),
                 "true", item + "is not checked");
@@ -72,7 +60,7 @@ public class HW21Test extends BaseTest {
         createItem(folderName,"Folder");
 
         Actions actions = new Actions(getDriver());
-        actions.moveToElement(getDriver().findElement(By.cssSelector("tr[id='job_"+projectName+"'] a"))).build().perform();
+        actions.moveToElement(getDriver().findElement(By.cssSelector("#job_"+projectName+" > td:nth-child(3) > a > span"))).build().perform();
 //        getDriver().findElement(By.cssSelector("tr[id='job_"+projectName+"'] a")).click();
         getDriver().findElement(By.cssSelector("button.jenkins-menu-dropdown-chevron[data-href='http://localhost:8080/job/"+projectName+"/']")).click();
         getDriver().findElement(By.xpath("//a[contains(., 'Move')]")).click();
