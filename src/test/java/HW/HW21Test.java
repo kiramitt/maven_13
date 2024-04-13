@@ -42,7 +42,7 @@ public class HW21Test extends BaseTest {
 
 
     @Test
-    public void US_01_01_006() {
+    public void testFreestyleProjectMoveToFolder() {
     // https://trello.com/c/KjucoLou/37-us0101006-freestyleproject-move-to-folder
     // US_01.01.006 | FreestyleProject > Move to Folder
     // As a User, I want to move freestyle project to folder, so that I can organize a hierarchical directory structure,
